@@ -40,9 +40,9 @@ public class DeleteServlet extends HttpServlet {
 	}
 
 	protected void perform(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String detail = request.getParameter("detail");
+		int id = Integer.parseInt(request.getParameter("board_id"));
 		Topic topic = new Topic();
-		topic.setDetail(detail);
+		topic.setId(id);
 		BoardController ctrl = BoardController.getInstance();
 		ctrl.postTopic(topic);
 		request.getRequestDispatcher("/read").

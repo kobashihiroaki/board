@@ -91,6 +91,49 @@ public class BoardController {
 		return topics;
 	}
 
+	public List<Topic> DeleteTopics() {
+		String sql = "DELETE * FROM board WHERE id =" + topic.getI()+ ";
+		List<Topic> topics = new ArrayList<Topic>();
+
+		Connection con = null;
+		Statement smt = null;
+		ResultSet rs = null;
+		try {
+			con = ConnectionManager.getConnection();
+			smt = con.createStatement();
+			rs = smt.executeQuery(sql);
+			while (rs.next()) {
+				Topic topic = new Topic();
+				topic.setId(rs.getInt("id"));
+				topic.setStart_at(rs
+						.getTimestamp("start_at"));
+				topic.setDetail(rs.getString("detail"));
+				topics.add(topic);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (Exception ignore) {
+				}
+			}
+			if (smt != null) {
+				try {
+					smt.close();
+				} catch (Exception ignore) {
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception ignore) {
+				}
+			}
+		}
+		return topics;
+	}
 
 	public static void main(String[] args) {
 		BoardController ctrl = BoardController.getInstance();
