@@ -30,7 +30,7 @@ public class ReadServlet extends HttpServlet {
 		BoardController ctrl = BoardController.getInstance();
 		List<Topic> topics = ctrl.getTopics();
 		request.setAttribute("topics", topics);
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
+		request.getRequestDispatcher("/board.jsp").forward(request, response);
 	}
 
 //	private static final long serialVersionUID = 1L;
