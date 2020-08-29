@@ -1,11 +1,12 @@
 package board_create;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Topic {
 	private int id;
 	private String detail;
-	private Date start_at;
+	private String start_at;
 
 	public String toString() {
 		return super.toString()
@@ -29,11 +30,12 @@ public class Topic {
 		this.detail = detail;
 	}
 
-	public Date getStart_at() {
+	public String getStart_at() {
 		return start_at;
 	}
 	public void setStart_at(Date start_at) {
-		this.start_at = start_at;
+		SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		this.start_at = df.format(start_at);;
 	}
 
 }
