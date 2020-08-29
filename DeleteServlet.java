@@ -40,13 +40,12 @@ public class DeleteServlet extends HttpServlet {
 	}
 
 	protected void perform(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("board_id"));
+		String id = request.getParameter("board_id");
 		Topic topic = new Topic();
-		topic.setId(id);
+		topic.setId(Integer.parseInt(id));
 		BoardController ctrl = BoardController.getInstance();
-		ctrl.postTopic(topic);
-		request.getRequestDispatcher("/read").
-			forward(request, response);
+		ctrl.deleteTopic(topic);
+		request.getRequestDispatcher("/read").forward(request, response);
 	}
 
 }

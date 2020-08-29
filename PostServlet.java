@@ -30,8 +30,7 @@ public class PostServlet extends HttpServlet {
 		topic.setDetail(detail);
 		BoardController ctrl = BoardController.getInstance();
 		ctrl.postTopic(topic);
-		request.getRequestDispatcher("/read").
-			forward(request, response);
+		request.getRequestDispatcher("/read").forward(request, response);
 	}
 
 
